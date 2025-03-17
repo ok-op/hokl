@@ -108,21 +108,25 @@
             return;
         }
 
-        // Generate the video link
-        const iframeUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
+        // Generate the video and download links
+        const videoUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
+        const downloadUrl = `https://www.terabox.tech/download?url=${encodeURIComponent(input)}`;
+
+        // Update the iframe source
         const player = document.getElementById('videoPlayer');
-        player.src = iframeUrl;
+        player.src = videoUrl;
 
         // Display the video player
         document.querySelector('.video-player').style.display = 'flex';
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         // Update the download button link
-        document.getElementById('downloadBtn').onclick = function () {
-            window.open(iframeUrl, '_blank');
-        };
+        const downloadBtn = document.getElementById('downloadBtn');
+        downloadBtn.href = downloadUrl;
+        downloadBtn.setAttribute('download', '');
     }
 
+    // Navigation active section handling
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', function (e) {
             if (!this.getAttribute('href').startsWith('#')) return;
