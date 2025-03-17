@@ -178,22 +178,18 @@ header p {
     margin-top: 15px;
 }
 
-/* Download Button */
-#downloadBtn {
-    background: #facc15;
-    color: #000;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
+.animated-text {
+    font-size: 20px;
     font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    animation: colorChange 3s infinite alternate;
 }
 
-#downloadBtn:hover {
-    background: #eab308;
-    transform: scale(1.1);
+/* মূল রঙ পরিবর্তন করবে */
+@keyframes colorChange {
+    0% { color: #ff5733; }  /* লাল */
+    50% { color: #33ff57; }  /* সবুজ */
+    100% { color: #3357ff; }  /* নীল */
 }
 
 /* Features Section */
