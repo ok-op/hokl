@@ -41,7 +41,7 @@
                     <div class="video-wrapper">
                         <iframe id="videoPlayer" allowfullscreen scrolling="no"></iframe>
                         <div class="controls">
-                            <a id="downloadBtn" class="btn-primary" download>Download Video</a>
+                            <span class="animated-text">WOODcraft</span>
                         </div>
                     </div>
                 </div>
@@ -108,9 +108,8 @@
             return;
         }
 
-        // Generate the video and download links
+        // Generate the video link
         const videoUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
-        const downloadUrl = `https://www.terabox.tech/download?url=${encodeURIComponent(input)}`;
 
         // Update the iframe source
         const player = document.getElementById('videoPlayer');
@@ -119,11 +118,6 @@
         // Display the video player
         document.querySelector('.video-player').style.display = 'flex';
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // Update the download button link
-        const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.href = downloadUrl;
-        downloadBtn.setAttribute('download', '');
     }
 
     // Navigation active section handling
