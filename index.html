@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="S-Video Player - Watch and Download videos without needing the Terabox App or Premium.">
+    <title>T Player: TeraBox Premium</title>
+    <link rel="icon" type="image/png" href="https://s2.teraboxcdn.com/common-static/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="splayer.svg" alt="S Player">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="https://github.com/" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="home" class="section active">
+            <header>
+                <h1>TeraBox Video Player</h1>
+                <p>Play videos seamlessly. No App or Premium required.</p>
+            </header>
+            
+            <div class="content-wrapper">
+                <div class="video-input-box">
+                    <input type="text" id="videoLink" placeholder="Paste your TeraBox video link here">
+                    <button onclick="playVideo()" class="btn-primary"><i class="fas fa-play"></i> Play</button>
+                </div>
+
+                <div class="video-player">
+                    <iframe id="videoPlayer" allowfullscreen scrolling="no"></iframe>
+                </div>
+
+                <div class="features">
+                    <h3>Why Choose Us?</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-forward"></i>
+                            <p>Skip 10s Forward/Backward</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-volume-up"></i>
+                            <p>Volume Control</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tv"></i>
+                            <p>Quality Control</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <p>Speed up to 2x</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-download"></i>
+                            <p>Download Video</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <p>Picture-in-Picture</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="section">
+            <div class="privacy-content">
+                <h1>Privacy Policy</h1>
+                <p class="privacy-intro">Your privacy is our priority. Here's how we handle your data:</p>
+                <ul class="privacy-list">
+                    <li><i class="fas fa-shield-alt"></i> We do not store or track the links you paste</li>
+                    <li><i class="fas fa-server"></i> All videos are streamed directly from TeraBox servers</li>
+                    <li><i class="fas fa-user-secret"></i> We do not collect personal information</li>
+                    <li><i class="fas fa-cookie"></i> Cookies are only used for functional purposes</li>
+                    <li><i class="fas fa-envelope"></i> Contact us at play.terabox@telegmail.com</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 T-VidPlayer. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/Terabox-Player" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function playVideo() {
+            const input = document.getElementById('videoLink').value;
+            if (!input.trim()) {
+                alert('Please enter a valid link.');
+                return;
+            }
+            const iframeUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
+            const player = document.getElementById('videoPlayer');
+            player.src = iframeUrl;
+            document.querySelector('.video-player').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!this.getAttribute('href').startsWith('#')) return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.querySelectorAll('.section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.querySelectorAll('.nav-links a').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
