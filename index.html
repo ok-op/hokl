@@ -38,7 +38,12 @@
                 </div>
 
                 <div class="video-player">
-                    <iframe id="videoPlayer" allowfullscreen scrolling="no"></iframe>
+                    <div class="video-wrapper">
+                        <iframe id="videoPlayer" allowfullscreen scrolling="no"></iframe>
+                        <div class="controls">
+                            <button id="downloadBtn">Download Video</button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="features">
@@ -96,35 +101,48 @@
     </footer>
 
     <script>
-        function playVideo() {
-            const input = document.getElementById('videoLink').value;
-            if (!input.trim()) {
-                alert('Please enter a valid link.');
-                return;
-            }
-            const iframeUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
-            const player = document.getElementById('videoPlayer');
-            player.src = iframeUrl;
-            document.querySelector('.video-player').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    function playVideo() {
+        const input = document.getElementById('videoLink').value;
+        if (!input.trim()) {
+            alert('Please enter a valid link.');
+            return;
         }
 
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (!this.getAttribute('href').startsWith('#')) return;
-                
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                document.querySelectorAll('.nav-links a').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                document.getElementById(targetId).classList.add('active');
-                this.classList.add('active');
+        // Generate the video link
+        const iframeUrl = `https://www.terabox.tech/play.html?url=${encodeURIComponent(input)}`;
+        const player = document.getElementById('videoPlayer');
+        player.src = iframeUrl;
+
+        // Display the video player
+        document.querySelector('.video-player').style.display = 'flex';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Update the download button link
+        document.getElementById('downloadBtn').onclick = function () {
+            window.open(iframeUrl, '_blank');
+        };
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            if (!this.getAttribute('href').startsWith('#')) return;
+
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+
+            // Remove active classes
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
+            document.querySelectorAll('.nav-links a').forEach(nav => {
+                nav.classList.remove('active');
+            });
+
+            // Add active class to the selected section
+            document.getElementById(targetId).classList.add('active');
+            this.classList.add('active');
         });
+    });
     </script>
 </body>
 </html>
