@@ -90,7 +90,7 @@ main {
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
-    padding: 80px 40px; /* উপরে-নিচে ভালোভাবে প্যাডিং */
+    padding: 100px 40px; /* উপরে ও নিচে ভালো স্পেস */
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -99,29 +99,31 @@ header {
     width: 90%;
     max-width: 800px;
     text-align: center;
-    min-height: 250px; /* উচ্চতা বাড়ানো */
+    min-height: 350px; /* হাইট ঠিক করা */
     clip-path: ellipse(100% 40% at 50% 100%); /* নিচের অংশ গোল */
-    position: relative; /* সঠিকভাবে সেন্টারে রাখার জন্য */
-    margin: 20px auto; /* হেডারকে সম্পূর্ণ সেন্টারে আনার জন্য */
+    margin: 50px auto; /* সম্পূর্ণ সেন্টারে রাখা */
+    box-sizing: border-box; /* padding এবং border ইফেক্ট পড়বে না */
 }
 
 /* হেডিং */
 header h1 {
-    font-size: 32px; /* ফন্ট সাইজ আরও বাড়ানো */
+    font-size: 32px; /* ফন্ট সাইজ ঠিক রাখা */
     font-weight: bold;
-    margin: 0;
-    padding-bottom: 15px; /* নিচের গ্যাপ ঠিক করা */
+    margin: 0 auto; /* সেন্টারে রাখা */
+    padding-bottom: 10px; /* নিচে সামান্য গ্যাপ */
     color: #fff;
+    text-align: center; /* টেক্সট সেন্টারে */
 }
 
 /* প্যারাগ্রাফ */
 header p {
     font-size: 18px; /* ফন্ট সাইজ ঠিক রাখা */
     color: #f3f4f6;
-    max-width: 600px;
-    padding: 0 20px;
-    margin-top: 10px; /* উপরের গ্যাপ ঠিক রাখা */
+    max-width: 600px; /* টেক্সট যাতে চওড়া না হয় */
+    padding: 10px 20px; /* কিছু প্যাডিং */
+    margin-top: 10px; /* কিছু গ্যাপ */
     line-height: 1.6; /* লাইন স্পেসিং ঠিক করা */
+    text-align: center; /* টেক্সট সেন্টারে */
 }
 
 /* Video Input */
