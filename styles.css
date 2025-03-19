@@ -100,33 +100,32 @@ header {
     max-width: 800px;
     text-align: center;
     min-height: 350px; /* হাইট ঠিক করা */
-    clip-path: ellipse(100% 50% at 50% 100%); /* নিচের অংশ গোল হবে */
-    margin: 50px auto; /* সম্পূর্ণ সেন্টারে রাখা */
+    clip-path: ellipse(100% 40% at 50% 100%); /* নিচের অংশ গোল হবে */
+    margin-top: 0px; /* উপরের বাড়তি গ্যাপ কমানো */
     box-sizing: border-box; /* padding এবং border ইফেক্ট পড়বে না */
     position: relative; /* সঠিকভাবে সেন্টারে রাখতে */
+    overflow: hidden; /* বাড়তি অংশ কেটে ফেলবে */
 }
 
 /* হেডিং */
 header h1 {
-    font-size: 28px; /* ফন্ট সাইজ ঠিক রাখা */
+    font-size: 32px; /* ফন্ট সাইজ ঠিক রাখা */
     font-weight: bold;
     margin: 0 auto; /* সেন্টারে রাখা */
     padding-bottom: 10px; /* নিচে সামান্য গ্যাপ */
     color: #fff;
     text-align: center; /* টেক্সট সেন্টারে */
-    z-index: 1;
 }
 
 /* প্যারাগ্রাফ */
 header p {
-    font-size: 14px; /* ফন্ট সাইজ ঠিক রাখা */
+    font-size: 18px; /* ফন্ট সাইজ ঠিক রাখা */
     color: #f3f4f6;
     max-width: 600px; /* টেক্সট যাতে চওড়া না হয় */
     padding: 10px 20px; /* কিছু প্যাডিং */
     margin-top: 10px; /* কিছু গ্যাপ */
     line-height: 1.6; /* লাইন স্পেসিং ঠিক করা */
     text-align: center; /* টেক্সট সেন্টারে */
-    z-index: 1;
 }
 
 /* Video Input */
