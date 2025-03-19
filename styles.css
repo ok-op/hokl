@@ -287,18 +287,18 @@ footer {
 }
 
 footer p {
-    margin: 5px 0;
+    margin: 10px 0;
     font-size: 14px;
     color: white;
 }
 
 .social-links {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 .social-links a {
     color: white;
     font-size: 20px;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 5 10px;
     }
