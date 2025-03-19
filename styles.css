@@ -88,6 +88,17 @@ main {
 }
 
 /* Hero Section */
+
+
+/* Video Input */
+.video-input-box {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+}
+
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
@@ -96,7 +107,7 @@ header {
     display: inline-block;
     width: 90%;
     max-width: 800px;
-    clip-path: ellipse(100% 60% at 50% 100%); /* নিচের অংশ গোল হবে */
+    clip-path: ellipse(100% 60% at 50% 0%); /* নিচের অংশ গোল হবে */
 }
 
 header h1 {
@@ -115,15 +126,6 @@ header p {
     font-size: 10px;
     margin-top: 10px;
     color: #f3f4f6;
-}
-
-/* Video Input */
-.video-input-box {
-    margin: 20px auto;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    max-width: 500px;
 }
 
 .video-input-box input {
