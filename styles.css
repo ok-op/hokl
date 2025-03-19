@@ -277,15 +277,13 @@ header p {
 
 /* Footer */
 footer {
-    background: linear-gradient(to right, #1e293b, #263759); /* ডার্ক ব্লু গ্রেডিয়েন্ট */
+    background: linear-gradient(to right, #1e293b, #263759); /* ব্লু গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
     padding: 20px;
     text-align: center;
     margin-top: 50px;
     position: relative;
     height: 100px;
-    border-top-left-radius: 100px; /* বাঁদিকের কোণা গোল */
-    border-top-right-radius: 100px; /* ডানদিকের কোণা গোল */
-    clip-path: ellipse(70% 100% at 50% 100%); /* উপরের অংশ curve করতে */
+    clip-path: ellipse(100% 60% at 50% 100%); /* উপরের অংশ গোল করতে */
 }
 
 
