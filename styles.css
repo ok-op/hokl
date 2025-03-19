@@ -277,24 +277,28 @@ header p {
 
 /* Footer */
 footer {
-    background: linear-gradient(to right, #1e293b, #263759); /* ব্লু গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
-    padding: 20px;
+    background: linear-gradient(to right, #1e293b, #263759);
+    padding: 10px 20px; /* উপরে-নিচে কম padding */
     text-align: center;
     margin-top: 50px;
     position: relative;
-    height: 100px;
-    clip-path: ellipse(100% 60% at 50% 100%); /* উপরের অংশ গোল করতে */
+    clip-path: ellipse(100% 40% at 50% 100%); /* উপরের অংশ গোল করবে */
+    height: auto; /* ফিক্সড হাইট না দিয়ে কন্টেন্ট অনুযায়ী ঠিক থাকবে */
 }
 
-
 footer p {
-    margin: 0;
+    margin: 5px 0;
     font-size: 14px;
+    color: white;
+}
+
+.social-links {
+    margin-top: 5px;
 }
 
 .social-links a {
-    color: #4f46e5;
+    color: white;
     font-size: 20px;
-    margin-left: 10px;
     text-decoration: none;
-}
+    margin: 0 10px;
+    }
