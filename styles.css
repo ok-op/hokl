@@ -113,8 +113,8 @@ h1 i {
 
 header p {
     font-size: 14px; /* টেক্সট সাইজ বাড়ানো */
-    margin-top: 20px; /* উপর থেকে গ্যাপ */
-    margin-bottom: 20px; /* নিচে গ্যাপ */
+    margin-top: 10px; /* উপর থেকে গ্যাপ */
+    margin-bottom: 50px; /* নিচে গ্যাপ */
     color: #f3f4f6;
     text-align: center;
 }
