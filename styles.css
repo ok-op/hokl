@@ -278,7 +278,7 @@ header p {
 /* Footer */
 footer {
     background: linear-gradient(to right, #1e293b, #263759);
-    padding: 20px 20px; /* উপরে-নিচে কম padding */
+    padding: 40px 20px; /* উপরে-নিচে কম padding */
     text-align: center;
     margin-top: 50px;
     position: relative;
