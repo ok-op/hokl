@@ -278,20 +278,20 @@ header p {
 /* Footer */
 footer {
     background: linear-gradient(to right, #1e293b, #263759);
-    padding: 30px 20px 10px; /* নিচের padding কমানো হয়েছে */
+    padding: 50px 20px 20px; /* উপরের padding বাড়ানো হয়েছে */
     text-align: center;
     margin-top: 50px;
     position: relative;
-    clip-path: ellipse(100% 60% at 50% 100%); /* উপরের অংশ কম রাউন্ড হবে */
-    height: auto; /* কন্টেন্ট অনুযায়ী ঠিক থাকবে */
+    clip-path: ellipse(100% 60% at 50% 100%); /* ফুটারের উপরের অংশ ঠিক রাখা */
+    height: auto;
 }
 
 footer p {
-    margin: 10px 0; /* মার্জিন ঠিক করা হয়েছে */
+    margin: 20px 0 10px; /* উপরে 20px গ্যাপ রাখা হয়েছে */
     font-size: 14px;
     color: white;
     position: relative;
-    z-index: 1; /* টেক্সট যাতে ক্লিপ-পাথের নিচে না যায় */
+    z-index: 1;
 }
 
 .social-links {
