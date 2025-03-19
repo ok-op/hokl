@@ -90,42 +90,29 @@ main {
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
-    padding: 100px 40px;
+    padding: 50px 20px;
     border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: inline-block;
     width: 90%;
     max-width: 800px;
-    text-align: center;
-    min-height: 350px;
-    clip-path: ellipse(100% 40% at 50% 100%); /* নিচের দিক রাউন্ড */
-    margin-top: 0px;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
 }
 
-/* হেডিং */
 header h1 {
-    font-size: 32px;
-    font-weight: bold;
-    margin: 0 auto;
-    padding-bottom: 10px;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
     color: #fff;
-    text-align: center;
 }
 
-/* প্যারাগ্রাফ */
+h1 i {
+    margin-right: 8px;
+    color: #007bff; /* আইকনের রঙ */
+}
+
 header p {
-    font-size: 18px;
-    color: #f3f4f6;
-    max-width: 600px;
-    padding: 10px 20px;
+    font-size: 10px;
     margin-top: 10px;
-    line-height: 1.6;
-    text-align: center;
+    color: #f3f4f6;
 }
 
 
