@@ -305,4 +305,9 @@ footer p {
     font-size: 20px;
     text-decoration: none;
     margin: 5px 10px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffcc00; /* হোভার করলে রঙ পরিবর্তন হবে */
 }
