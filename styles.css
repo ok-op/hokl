@@ -34,10 +34,10 @@ body {
 }
 
 .logo-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
-    color: white; /* আপনার নেভবারের ব্যাকগ্রাউন্ড অনুযায়ী পরিবর্তন করুন */
-    margin-top: 5px; /* লোগোর নিচে কিছু গ্যাপ */
+    color: #ffcc00; /* আপনার নেভবারের ব্যাকগ্রাউন্ড অনুযায়ী পরিবর্তন করুন */
+    margin-top: 1px; /* লোগোর নিচে কিছু গ্যাপ */
 }
 
 .nav-links {
