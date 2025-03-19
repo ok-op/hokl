@@ -90,7 +90,7 @@ main {
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
-    padding: 50px 20px 60px; /* নিচের দিকে বেশি padding */
+    padding: 50px 40px 60px; /* নিচের দিকে বেশি padding */
     border-radius: 15px;
     display: inline-block;
     width: 90%;
@@ -112,9 +112,9 @@ h1 i {
 }
 
 header p {
-    font-size: 14px; /* টেক্সট সাইজ বাড়ানো */
-    margin-top: 10px; /* উপর থেকে গ্যাপ */
-    margin-bottom: 50px; /* নিচে গ্যাপ */
+    font-size: 12px; /* টেক্সট সাইজ বাড়ানো */
+    margin-top: 5px; /* উপর থেকে গ্যাপ */
+    margin-bottom: 100px; /* নিচে গ্যাপ */
     color: #f3f4f6;
     text-align: center;
 }
