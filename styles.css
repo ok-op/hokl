@@ -90,7 +90,7 @@ main {
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
-    padding: 60px 40px 80px; /* উপরে এবং নিচে আরও বেশি padding */
+    padding: 80px 40px; /* উপরে-নিচে ভালোভাবে প্যাডিং */
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -99,27 +99,29 @@ header {
     width: 90%;
     max-width: 800px;
     text-align: center;
-    min-height: 200px; /* হাইট ঠিক করা */
-    clip-path: ellipse(100% 50% at 50% 0%); /* নিচের অংশ গোল হবে */
+    min-height: 250px; /* উচ্চতা বাড়ানো */
+    clip-path: ellipse(100% 40% at 50% 100%); /* নিচের অংশ গোল */
+    position: relative; /* সঠিকভাবে সেন্টারে রাখার জন্য */
+    margin: 20px auto; /* হেডারকে সম্পূর্ণ সেন্টারে আনার জন্য */
 }
 
 /* হেডিং */
 header h1 {
-    font-size: 30px; /* ফন্ট সাইজ বাড়ানো */
+    font-size: 32px; /* ফন্ট সাইজ আরও বাড়ানো */
     font-weight: bold;
     margin: 0;
-    padding-bottom: 10px; /* নিচে গ্যাপ */
+    padding-bottom: 15px; /* নিচের গ্যাপ ঠিক করা */
     color: #fff;
 }
 
 /* প্যারাগ্রাফ */
 header p {
-    font-size: 18px; /* ফন্ট সাইজ আরও বাড়ানো */
+    font-size: 18px; /* ফন্ট সাইজ ঠিক রাখা */
     color: #f3f4f6;
     max-width: 600px;
     padding: 0 20px;
-    margin-top: 10px; /* উপরে কিছু গ্যাপ */
-    line-height: 1.5; /* লাইন স্পেসিং ঠিক করা */
+    margin-top: 10px; /* উপরের গ্যাপ ঠিক রাখা */
+    line-height: 1.6; /* লাইন স্পেসিং ঠিক করা */
 }
 
 /* Video Input */
