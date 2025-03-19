@@ -278,16 +278,16 @@ header p {
 /* Footer */
 footer {
     background: linear-gradient(to right, #1e293b, #263759);
-    padding: 50px 20px 20px; /* উপরের padding বাড়ানো হয়েছে */
+    padding: 60px 20px 20px; /* উপরে আরও বেশি padding দেওয়া হলো */
     text-align: center;
     margin-top: 50px;
     position: relative;
-    clip-path: ellipse(100% 60% at 50% 100%); /* ফুটারের উপরের অংশ ঠিক রাখা */
+    clip-path: ellipse(100% 60% at 50% 100%); /* উপরের অংশ গোল থাকবে */
     height: auto;
 }
 
 footer p {
-    margin: 20px 0 10px; /* উপরে 20px গ্যাপ রাখা হয়েছে */
+    margin: 30px 0 10px; /* উপরে আরও গ্যাপ বাড়ানো হলো */
     font-size: 14px;
     color: white;
     position: relative;
