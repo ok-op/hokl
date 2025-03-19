@@ -51,6 +51,12 @@ body {
     margin: 0 15px;
 }
 
+.nav-links i {
+    margin-right: 5px; /* আইকন ও টেক্সটের মধ্যে গ্যাপ */
+    font-size: 16px;
+    color: white; /* আপনার থিম অনুযায়ী পরিবর্তন করুন */
+}
+
 .nav-links a {
     color: #94a3b8;
     text-decoration: none;
