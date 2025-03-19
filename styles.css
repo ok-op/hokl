@@ -90,7 +90,7 @@ main {
 /* Hero Section */
 header {
     background: linear-gradient(135deg, #4f46e5, #ec4899);
-    padding: 80px 40px; /* উপরে ও নিচে ব্যালান্সড স্পেস */
+    padding: 100px 40px;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
@@ -99,37 +99,33 @@ header {
     width: 90%;
     max-width: 800px;
     text-align: center;
-    min-height: 350px; /* হাইট ঠিক রাখা */
-    clip-path: ellipse(100% 50% at 50% 100%); /* নিচের অংশ গোল রাখা */
-    margin-top: 20px; /* উপরের বাড়তি গ্যাপ ঠিক করা */
-    box-sizing: border-box; 
-    position: relative; 
+    min-height: 350px;
+    clip-path: ellipse(100% 40% at 50% 100%); /* নিচের দিক রাউন্ড */
+    margin-top: 0px;
+    box-sizing: border-box;
+    position: relative;
     overflow: hidden;
 }
 
 /* হেডিং */
 header h1 {
-    font-size: 36px; /* ফন্ট সাইজ বড় করা */
+    font-size: 32px;
     font-weight: bold;
-    margin: 0 auto; 
-    padding-bottom: 10px; 
+    margin: 0 auto;
+    padding-bottom: 10px;
     color: #fff;
     text-align: center;
-    position: relative;
-    z-index: 10; /* অন্য এলিমেন্টের নিচে চলে না যায় */
 }
 
 /* প্যারাগ্রাফ */
 header p {
-    font-size: 18px; 
+    font-size: 18px;
     color: #f3f4f6;
-    max-width: 600px; 
-    padding: 10px 20px; 
-    margin-top: 10px; 
-    line-height: 1.6; 
-    text-align: center; 
-    position: relative;
-    z-index: 10;
+    max-width: 600px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    line-height: 1.6;
+    text-align: center;
 }
 
 
