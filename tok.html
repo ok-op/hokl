@@ -54,6 +54,26 @@ button:active {
     width: 80%;
     margin: 10px auto; /* কেন্দ্রে রাখা */
 }
+        .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #28a745;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #1e7e34;
+}
     </style>
 </head>
 <body>
@@ -63,6 +83,10 @@ button:active {
     <button onclick="download()">ডাউনলোড করুন</button>
 
     <div class="video-container" id="videoContainer"></div>
+
+    <div class="footer">
+    Developed by <a href="https://t.me/Farooq_is_king" target="_blank">❣️ WOODcraft</a>
+    </div>
 
     <script>
         async function download() {
