@@ -17,18 +17,36 @@
             margin: 10px;
         }
         button {
-            padding: 10px 20px;
-            background: #28a745;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #218838;
-        }
-        .video-container {
-            margin-top: 20px;
-        }
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(145deg, #28a745, #218838);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.2);
+    margin: 10px; /* বাটনগুলোর মধ্যে গ্যাপ */
+    display: inline-block;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #218838, #1e7e34);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+button:active {
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
+}
+
+.video-container button {
+    display: block; /* প্রতিটি বাটন আলাদা লাইনে থাকবে */
+    width: 80%;
+    margin: 10px auto; /* কেন্দ্রে রাখা */
+}
     </style>
 </head>
 <body>
