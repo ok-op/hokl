@@ -54,17 +54,19 @@ button:active {
     width: 80%;
     margin: 10px auto; /* কেন্দ্রে রাখা */
 }
-        .footer {
+.footer {
     position: fixed;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: calc(100% - 10px); /* দুই পাশে ৫px করে গ্যাপ */
     background: #333;
     color: white;
     text-align: center;
     padding: 10px;
     font-size: 14px;
-    margin: 0 5px; /* দুই পাশে ৫px গ্যাপ */
     border-radius: 5px 5px 0 0; /* উপরের কোনাগুলো গোল করা */
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* উপরের দিকে হালকা শ্যাডো */
 }
 
 .footer a {
