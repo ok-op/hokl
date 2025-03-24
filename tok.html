@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok ভিডিও ডাউনলোডার</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .download-links {
+            margin-top: 20px;
+        }
+        .download-links a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .download-links a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📥 TikTok ভিডিও & মিউজিক ডাউনলোডার</h2>
+    <p>টিকটকের লিংক দিন এবং ডাউনলোড করুন 🎶🎥</p>
+
+    <input type="text" id="tiktokUrl" placeholder="এখানে TikTok ভিডিও লিংক পেস্ট করুন...">
+    <button onclick="fetchVideo()">ডাউনলোড করুন</button>
+
+    <div class="download-links" id="downloadLinks"></div>
+
+    <script>
+        async function fetchVideo() {
+            const url = document.getElementById("tiktokUrl").value.trim();
+            if (!url) {
+                alert("অনুগ্রহ করে একটি বৈধ TikTok লিংক দিন!");
+                return;
+            }
+
+            try {
+                const response = await fetch(`https://tik-tok-dl-api.wd-zone.workers.dev/?url=${encodeURIComponent(url)}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    alert("ডাউনলোড করা সম্ভব হয়নি! অনুগ্রহ করে সঠিক লিংক দিন।");
+                    return;
+                }
+
+                document.getElementById("downloadLinks").innerHTML = `
+                    <h3>🔗 ডাউনলোড লিংক:</h3>
+                    <a href="${data.play_url}" target="_blank">⬇️ ওয়াটারমার্ক ছাড়া ভিডিও</a>
+                    <a href="${data.watermark_play_url}" target="_blank">⬇️ ওয়াটারমার্ক সহ ভিডিও</a>
+                    <a href="${data.music.url}" target="_blank">🎵 মিউজিক ডাউনলোড করুন</a>
+                `;
+            } catch (error) {
+                alert("সার্ভারে সমস্যা হয়েছে, পরে চেষ্টা করুন!");
+                console.error(error);
+            }
+        }
+    </script>
+
+</body>
+</html>
