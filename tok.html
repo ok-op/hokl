@@ -115,6 +115,7 @@ button:active {
                         <p>📦 <strong>Size:</strong> ${data.size ? (data.size / 1024).toFixed(2) + " KB" : "Unknown"}</p>
                         <img src="${data.cover}" alt="Thumbnail" width="200"><br><br>
                         <video src="${data.play_url}" controls width="300"></video><br><br>
+                        <p>📦 <strong>Size:</strong> ${data.size ? (data.size / 1024).toFixed(2) + " KB" : "Unknown"}</p>
                         <a href="${data.play_url}" download><button>⬇️ ভিডিও ডাউনলোড (No Watermark)</button></a>
                         <a href="${data.watermark_play_url || '#'}" download><button>⬇️ ভিডিও ডাউনলোড (Watermark)</button></a><br>
                         <a href="${data.music?.url || '#'}" download><button>🎵 মিউজিক ডাউনলোড</button></a><br><br>
