@@ -47,17 +47,17 @@
             return;
         }
 
-        // ✅ CORS Proxy ঠিকমতো কাজ করবে
-        let apiUrl = `https://cors-proxy.wd-zone.workers.dev/?url=${encodeURIComponent("https://tik-tok-dl-api.wd-zone.workers.dev/?url=" + url)}`;
+        let apiUrl = `https://cors-proxy.wd-zone.workers.dev/?url=${encodeURIComponent("https://tik-tok-dl-api.wd-zone.workers.dev/?url=" + encodeURIComponent(url))}`;
 
         console.log("🔗 Fetching API:", apiUrl);
 
         try {
             let response = await fetch(apiUrl, {
                 method: "GET",
-                mode: "cors", // ✅ CORS সমস্যা সমাধান
+                mode: "cors",
                 headers: {
-                    "Accept": "application/json"
+                    "Accept": "application/json",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
                 }
             });
 
@@ -86,6 +86,6 @@
         }
     }
     </script>
-
+    
 </body>
 </html>
