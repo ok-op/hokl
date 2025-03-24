@@ -111,8 +111,8 @@ button:active {
                 if (data.play_url) {
                     document.getElementById("videoContainer").innerHTML = `
                         <h3>${data.title || "TikTok ভিডিও"}</h3>
-                        <p>👤 <strong>Creator:</strong> ${data.author && data.author.nickname ? data.author.nickname : "Unknown"}</p>
-                        <p>📦 <strong>Size:</strong> ${data.size && data.size.size ? data.size.size : "Unknown"}</p>
+                        <p>👤 <strong>Creator:</strong> ${data.author?.nickname || "Unknown"}</p>
+                        <p>📦 <strong>Size:</strong> ${data.size ? (data.size / 1024).toFixed(2) + " KB" : "Unknown"}</p>
                         <img src="${data.cover}" alt="Thumbnail" width="200"><br><br>
                         <video src="${data.play_url}" controls width="300"></video><br><br>
                         <a href="${data.play_url}" download><button>⬇️ ভিডিও ডাউনলোড (No Watermark)</button></a>
