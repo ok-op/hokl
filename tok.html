@@ -57,12 +57,14 @@ button:active {
         .footer {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: calc(100% - 10px); /* দুই পাশে ৫px করে গ্যাপ */
     background: #333;
     color: white;
     text-align: center;
     padding: 10px;
     font-size: 14px;
+    margin: 0 5px; /* দুই পাশে ৫px গ্যাপ */
+    border-radius: 5px 5px 0 0; /* উপরের কোনাগুলো গোল করা */
 }
 
 .footer a {
