@@ -47,28 +47,30 @@
                 return;
             }
 
-            let apiUrl = `https://tik-tok-dl-api.wd-zone.workers.dev/?url=${encodeURIComponent(url)}`;
+            let apiUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent("https://tik-tok-dl-api.wd-zone.workers.dev/?url=" + url)}`;
             
             try {
                 let response = await fetch(apiUrl);
                 let data = await response.json();
 
+                console.log("API Response:", data);  // ✅ কনসোলে রেসপন্স দেখাবে
+
                 if (data.play_url) {
                     document.getElementById("videoContainer").innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p>👤 <strong>Creator:</strong> ${data.author.nickname}</p>
+                        <h3>${data.title || "TikTok ভিডিও"}</h3>
+                        <p>👤 <strong>Creator:</strong> ${data.author?.nickname || "Unknown"}</p>
                         <img src="${data.cover}" alt="Thumbnail" width="200"><br><br>
                         <video src="${data.play_url}" controls width="300"></video><br><br>
                         <a href="${data.play_url}" download><button>⬇️ ভিডিও ডাউনলোড (No Watermark)</button></a>
-                        <a href="${data.watermark_play_url}" download><button>⬇️ ভিডিও ডাউনলোড (Watermark)</button></a><br><br>
-                        <a href="${data.music.url}" download><button>🎵 মিউজিক ডাউনলোড</button></a>
+                        <a href="${data.watermark_play_url || '#'}" download><button>⬇️ ভিডিও ডাউনলোড (Watermark)</button></a><br><br>
+                        <a href="${data.music?.url || '#'}" download><button>🎵 মিউজিক ডাউনলোড</button></a>
                     `;
                 } else {
                     alert("❌ ভিডিও ডাউনলোড লিঙ্ক পাওয়া যায়নি!");
                 }
 
             } catch (error) {
-                console.error(error);
+                console.error("API Fetch Error:", error);
                 alert("⚠️ কিছু ভুল হয়েছে! অনুগ্রহ করে আবার চেষ্টা করুন।");
             }
         }
