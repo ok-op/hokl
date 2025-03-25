@@ -11,6 +11,21 @@
             background-color: #f9f9f9;
             padding: 20px;
         }
+
+        .container {
+            background: linear-gradient(145deg, #ffffff, #dcdcdc);
+            box-shadow: 10px 10px 20px #aaaaaa, -10px -10px 20px #ffffff;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            transform: perspective(1000px) rotateX(10deg);
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
         
         input {
             width: 60%;
@@ -82,7 +97,9 @@ button:active {
 </head>
 <body>
 
-    <h2>🎵 TikTok ভিডিও এবং মিউজিক ডাউনলোড করুন</h2>
+    <div class="container">
+        <h2>🎵 TikTok Download videos and music</h2>
+    </div>
     <input type="text" id="tiktokUrl" placeholder="TikTok ভিডিও URL দিন">
     <button onclick="download()">ডাউনলোড করুন</button>
 
