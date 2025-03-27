@@ -1,48 +1,27 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎥 YouTube Shorts Player 🎥</title>
+    <title>Video Selector</title>
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
-            background: black;
-        }
-
-        h3 {
-            color: red;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .container {
-            width: 60%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         iframe {
-            width: 100%;
+            width: 80%;
             height: 400px;
-            border-radius: 10px;
-            border: none;
-        }
-        .buttons {
-            margin-top: 20px;
+            margin-top: 10px;
         }
         button {
-            padding: 6px 12px;  /* আগের চেয়ে ছোট */
-            font-size: 14px;    /* টেক্সট সাইজ ছোট */
+            padding: 6px 12px;
+            font-size: 14px;
             border: none;
-            border-radius: 4px; /* হালকা গোলাকার */
+            border-radius: 4px;
             cursor: pointer;
-            margin: 3px;        /* দূরত্ব কমানো হলো */
+            margin: 5px;
         }
-        
         #prevBtn {
             background: #007bff;
             color: white;
@@ -55,32 +34,53 @@
 </head>
 <body>
 
-    <h3>🎥 YouTube Shorts Player 🎥</h3>
-    <div class="container">
-        <iframe id="videoFrame" src="https://www.youtube.com/embed/Ymo5stx7si4" allowfullscreen></iframe>
-        <div class="buttons">
-            <button id="prevBtn">⬅️ Previous</button>
-            <button id="nextBtn">➡️ Next</button>
-        </div>
-    </div>
+    <h2>🎥 ভিডিও সিলেক্ট করুন</h2>
+    
+    <!-- ভিডিও সিলেকশন ড্রপডাউন -->
+    <select id="videoSelect">
+        <option value="0">🔥 Funny Cat Video</option>
+        <option value="1">🎶 Music Short</option>
+        <option value="2">🎮 Gaming Highlight</option>
+    </select>
+
+    <br><br>
+
+    <!-- ভিডিও প্লেয়ার -->
+    <iframe id="videoFrame" src="https://www.youtube.com/embed/Ymo5stx7si4" frameborder="0" allowfullscreen></iframe>
+
+    <br>
+
+    <!-- নিয়ন্ত্রণ বাটন -->
+    <button id="prevBtn">⏪ Previous</button>
+    <button id="nextBtn">⏩ Next</button>
 
     <script>
         let videos = [
-            "https://www.youtube.com/embed/Ymo5stx7si4",
-            "https://www.youtube.com/embed/hwCnXmLJ0WA",
-            "https://www.youtube.com/embed/Wzu6AJEYKKo"
+            { url: "https://www.youtube.com/embed/Ymo5stx7si4", title: "🔥 Funny Cat Video" },
+            { url: "https://www.youtube.com/embed/hwCnXmLJ0WA", title: "🎶 Music Short" },
+            { url: "https://www.youtube.com/embed/Wzu6AJEYKKo", title: "🎮 Gaming Highlight" }
         ];
         
         let currentIndex = 0;
 
-        document.getElementById("nextBtn").addEventListener("click", function() {
-            currentIndex = (currentIndex + 1) % videos.length;
-            document.getElementById("videoFrame").src = videos[currentIndex];
+        // ড্রপডাউন থেকে ভিডিও পরিবর্তন
+        document.getElementById("videoSelect").addEventListener("change", function() {
+            currentIndex = parseInt(this.value);
+            document.getElementById("videoFrame").src = videos[currentIndex].url;
         });
 
+        // পরবর্তী ভিডিও
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            currentIndex = (currentIndex + 1) % videos.length;
+            document.getElementById("videoFrame").src = videos[currentIndex].url;
+            document.getElementById("videoSelect").value = currentIndex;
+        });
+
+        // পূর্ববর্তী ভিডিও
         document.getElementById("prevBtn").addEventListener("click", function() {
             currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-            document.getElementById("videoFrame").src = videos[currentIndex];
+            document.getElementById("videoFrame").src = videos[currentIndex].url;
+            document.getElementById("videoSelect").value = currentIndex;
         });
     </script>
 
