@@ -3,112 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Selector</title>
+    <title>🎬 ভিডিও প্লেয়ার</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .container {
-            width: 60%;
-            margin: auto;
-            padding: 20px;
-            border-radius: 10px;
-            background: white;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        iframe {
-            width: 100%;
-            height: 400px;
-            border-radius: 10px;
-            border: none;
-        }
-        
-        button {
-            padding: 6px 12px;
-            font-size: 14px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin: 5px;
-        }
-        #prevBtn {
-            background: #007bff;
-            color: white;
-        }
-        #nextBtn {
-            background: #28a745;
-            color: white;
-        }
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; }
+        iframe { width: 560px; height: 315px; border: none; margin-top: 20px; }
+        button { padding: 6px 12px; font-size: 14px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        #prevBtn { background: #007bff; color: white; }
+        #nextBtn { background: #28a745; color: white; }
     </style>
 </head>
 <body>
 
-    <h2>🎥 ভিডিও সিলেক্ট করুন</h2>
-    
+    <h2>🎬 ভিডিও প্লেয়ার</h2>
+
     <!-- ভিডিও সিলেকশন ড্রপডাউন -->
-    <select id="videoSelect">
-        <option value="0">🔥 Modern History by Khan Sir) Lecture 01</option>
-        <option value="1">🎶 Music Short</option>
-        <option value="2">🎮 Gaming Highlight</option>
-        <option value="3">📚 Science Tutorial</option>
-        <option value="4">🎭 Comedy Video</option>
-    </select>
+    <select id="videoSelect"></select>
 
+    <!-- ভিডিও ফ্রেম -->
     <br><br>
-
-    <!-- ভিডিও প্লেয়ার -->
-    <div class="container">
-    <iframe id="videoFrame" src="https://www.youtube.com/embed/Ymo5stx7si4" frameborder="0" allowfullscreen></iframe>
-
+    <iframe id="videoFrame"></iframe>
     <br>
 
-    <!-- নিয়ন্ত্রণ বাটন -->
+    <!-- প্রিভিয়াস ও নেক্সট বাটন -->
     <button id="prevBtn">⏪ Previous</button>
     <button id="nextBtn">⏩ Next</button>
 
     <script>
-    let videos = [
-        { url: "https://www.youtube.com/embed/xCiNSvLJN7g", title: "🔥 Modern History by Khan Sir - Lecture 01" },
-        { url: "https://www.youtube.com/embed/hwCnXmLJ0WA", title: "🎶 Music Short" },
-        { url: "https://www.youtube.com/embed/Wzu6AJEYKKo", title: "🎮 Gaming Highlight" },
-        { url: "https://www.youtube.com/embed/abc123XYZ", title: "📚 Science Tutorial" },  // নতুন লিংক
-        { url: "https://www.youtube.com/embed/def456LMN", title: "🎭 Comedy Video" }       // নতুন লিংক
-    ];
+        let videos = [];
+        let currentIndex = 0;
+        let videoFrame = document.getElementById("videoFrame");
+        let selectElement = document.getElementById("videoSelect");
 
-    let currentIndex = 0;
+        // `videos.txt` ফাইল থেকে ভিডিও লোড করা
+        fetch("videos.txt")
+            .then(response => response.text())
+            .then(data => {
+                let lines = data.split("\n"); // লাইনভিত্তিক আলাদা করা
+                lines.forEach(line => {
+                    let [url, title] = line.split("|").map(item => item.trim()); // `|` দিয়ে আলাদা করা
+                    if (url && title) videos.push({ url, title });
+                });
 
-    // ড্রপডাউন মেনুতে সব ভিডিও যোগ করা
-    let selectElement = document.getElementById("videoSelect");
-    selectElement.innerHTML = "";  // পুরানো অপশন রিমুভ করুন
-    videos.forEach((video, index) => {
-        let option = document.createElement("option");
-        option.value = index;
-        option.textContent = video.title;
-        selectElement.appendChild(option);
-    });
+                // ড্রপডাউন তৈরি করা
+                videos.forEach((video, index) => {
+                    let option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = video.title;
+                    selectElement.appendChild(option);
+                });
 
-    // ড্রপডাউন থেকে ভিডিও পরিবর্তন
-    selectElement.addEventListener("change", function() {
-        currentIndex = parseInt(this.value);
-        document.getElementById("videoFrame").src = videos[currentIndex].url;
-    });
+                // প্রথম ভিডিও প্লে করা
+                if (videos.length > 0) {
+                    videoFrame.src = videos[0].url;
+                    selectElement.value = 0;
+                }
+            });
 
-    // পরবর্তী ভিডিও
-    document.getElementById("nextBtn").addEventListener("click", function() {
-        currentIndex = (currentIndex + 1) % videos.length;
-        document.getElementById("videoFrame").src = videos[currentIndex].url;
-        selectElement.value = currentIndex;
-    });
+        // ড্রপডাউন থেকে ভিডিও পরিবর্তন
+        selectElement.addEventListener("change", function() {
+            currentIndex = parseInt(this.value);
+            videoFrame.src = videos[currentIndex].url;
+        });
 
-    // পূর্ববর্তী ভিডিও
-    document.getElementById("prevBtn").addEventListener("click", function() {
-        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-        document.getElementById("videoFrame").src = videos[currentIndex].url;
-        selectElement.value = currentIndex;
-    });
+        // Next Button
+        document.getElementById("nextBtn").addEventListener("click", function() {
+            currentIndex = (currentIndex + 1) % videos.length;
+            videoFrame.src = videos[currentIndex].url;
+            selectElement.value = currentIndex;
+        });
+
+        // Previous Button
+        document.getElementById("prevBtn").addEventListener("click", function() {
+            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+            videoFrame.src = videos[currentIndex].url;
+            selectElement.value = currentIndex;
+        });
     </script>
-        
+
 </body>
 </html>
