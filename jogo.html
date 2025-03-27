@@ -131,9 +131,9 @@
 
     <script>
         let videos = [];
-let currentIndex = 0;
-let videoFrame = document.getElementById("videoFrame");
-let selectElement = document.getElementById("videoSelect");
+        let currentIndex = 0;
+        let videoFrame = document.getElementById("videoFrame");
+        let selectElement = document.getElementById("videoSelect");
 
 // `videos.txt` ফাইল থেকে ভিডিও লোড করা
 function loadVideos(callback = null) {
@@ -141,7 +141,6 @@ function loadVideos(callback = null) {
         .then(response => response.text())
         .then(data => {
             let newVideos = [];
-            selectElement.innerHTML = ""; // ড্রপডাউন খালি করো
             let lines = data.split("\n"); // লাইনভিত্তিক আলাদা করা
             lines.forEach(line => {
                 let [url, title] = line.split("|").map(item => item.trim());
@@ -152,6 +151,9 @@ function loadVideos(callback = null) {
             if (JSON.stringify(newVideos) !== JSON.stringify(videos)) {
                 videos = newVideos;
 
+                // ড্রপডাউন খালি করো
+                selectElement.innerHTML = ""; 
+
                 // ড্রপডাউন তৈরি করা
                 videos.forEach((video, index) => {
                     let option = document.createElement("option");
@@ -160,11 +162,14 @@ function loadVideos(callback = null) {
                     selectElement.appendChild(option);
                 });
 
-                // প্রথম ভিডিও প্লে করা (শুধু প্রথমবার)
-                if (videos.length > 0 && videoFrame.src === "") {
-                    videoFrame.src = videos[0].url;
-                    selectElement.value = 0;
+                // যদি আগের ভিডিও লিস্টের ইনডেক্স বিদ্যমান থাকে, সেটাকে রিস্টোর করো
+                if (currentIndex >= videos.length) {
+                    currentIndex = 0; // যদি নতুন লিস্টে আগের ভিডিও না থাকে, তাহলে প্রথম ভিডিও চালাও
                 }
+
+                // সঠিক ভিডিও প্লে করো
+                videoFrame.src = videos[currentIndex].url;
+                selectElement.value = currentIndex;
             }
 
             if (callback) callback();
@@ -173,9 +178,11 @@ function loadVideos(callback = null) {
 
 loadVideos(); // প্রথমবার ভিডিও লোড করো
 
-// প্রতি ৩০ সেকেন্ড পর শুধু নতুন ভিডিও যুক্ত হচ্ছে কিনা চেক করো, কিন্তু বর্তমান ভিডিও বন্ধ করো না
+// প্রতি ৩০ সেকেন্ড পর নতুন ভিডিও যুক্ত হচ্ছে কিনা চেক করো, কিন্তু বর্তমান ভিডিও বন্ধ করো না
 setInterval(() => loadVideos(() => {
-    if (videos.length > 0) selectElement.value = currentIndex;
+    if (videos.length > 0) {
+        selectElement.value = currentIndex;
+    }
 }), 30000);
 
 // ড্রপডাউন থেকে ভিডিও পরিবর্তন
