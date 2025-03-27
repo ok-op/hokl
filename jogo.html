@@ -24,7 +24,7 @@
         }
 
         iframe { 
-            width: 100%; 
+            width: calc(100% - 10px); /* ৫px করে দুই পাশে গ্যাপ */
             height: 350px; 
             border: none; 
             border-radius: 5px;
@@ -33,15 +33,17 @@
         /* বাটন কন্টেইনার */
         .button-container {
             margin-top: 20px;
+            display: flex;
+            justify-content: center; /* বাটন সেন্টারে রাখা */
+            gap: 10px;
         }
 
         button { 
-            padding: 6px 12px; 
-            font-size: 14px; 
+            padding: 10px 15px; 
+            font-size: 16px; 
             border: none; 
-            border-radius: 4px; 
+            border-radius: 5px; 
             cursor: pointer; 
-            margin: 5px; 
             transition: 0.3s;
         }
 
@@ -51,6 +53,29 @@
         /* হোভার ইফেক্ট */
         button:hover {
             opacity: 0.8;
+        }
+
+        /* ফুটার ডিজাইন */
+        .footer {
+            margin-top: 30px;
+            background: #222;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #00c3ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -70,6 +95,11 @@
     <div class="button-container">
         <button id="prevBtn">⏪ Previous</button>
         <button id="nextBtn">⏩ Next</button>
+    </div>
+
+    <!-- ফুটার -->
+    <div class="footer">
+        Developed by <a href="https://t.me/YourUsername" target="_blank">Your Name</a>
     </div>
 
     <script>
