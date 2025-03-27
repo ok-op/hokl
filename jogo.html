@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,21 +10,27 @@
             text-align: center; 
             background: #f4f4f4; 
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* থ্রিডি ভিডিও প্লেয়ার কন্টেইনার */
+        /* ভিডিও কন্টেইনার */
         .video-container {
-            width: 600px;
-            margin: 20px auto;
-            padding: 15px;
+            width: 90%; /* মোবাইল ও ডেস্কটপের জন্য রেস্পন্সিভ */
+            max-width: 600px;
             background: #fff;
+            padding: 15px;
             border-radius: 10px;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
             transform: perspective(1000px) rotateX(5deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         iframe { 
-            width: calc(100% - 10px); /* ৫px করে দুই পাশে গ্যাপ */
+            width: 100%;
             height: 350px; 
             border: none; 
             border-radius: 5px;
@@ -34,8 +40,9 @@
         .button-container {
             margin-top: 20px;
             display: flex;
-            justify-content: center; /* বাটন সেন্টারে রাখা */
+            justify-content: center;
             gap: 10px;
+            flex-wrap: wrap; /* মোবাইল ভিউতে ভালো দেখাবে */
         }
 
         button { 
@@ -49,7 +56,7 @@
 
         #prevBtn { background: #007bff; color: white; }
         #nextBtn { background: #28a745; color: white; }
-        
+
         /* হোভার ইফেক্ট */
         button:hover {
             opacity: 0.8;
@@ -77,6 +84,13 @@
         .footer a:hover {
             text-decoration: underline;
         }
+
+        /* মোবাইল ভিউ */
+        @media (max-width: 600px) {
+            iframe {
+                height: 250px; /* মোবাইলে উচ্চতা কমিয়ে দেওয়া */
+            }
+        }
     </style>
 </head>
 <body>
@@ -86,7 +100,7 @@
     <!-- ভিডিও সিলেকশন ড্রপডাউন -->
     <select id="videoSelect"></select>
 
-    <!-- থ্রিডি ভিডিও প্লেয়ার কন্টেইনার -->
+    <!-- ভিডিও কন্টেইনার -->
     <div class="video-container">
         <iframe id="videoFrame"></iframe>
     </div>
