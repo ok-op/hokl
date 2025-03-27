@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Reel Player</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 60%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        #playButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #e4405f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #videoContainer {
+            margin-top: 20px;
+            display: none;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎥 Instagram Reel Player 🎥</h1>
+    <div class="container">
+        <button id="playButton">▶️ Play Reel</button>
+        <div id="videoContainer">
+            <video id="instaVideo" controls></video>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("playButton").addEventListener("click", async function() {
+            let apiUrl = "https://api.akuari.my.id/downloader/ig?link=https://www.instagram.com/reel/DGdVrSgBQuq/";
+
+            try {
+                let response = await fetch(apiUrl);
+                let data = await response.json();
+
+                if (data.url) {
+                    let videoElement = document.getElementById("instaVideo");
+                    videoElement.src = data.url;
+                    document.getElementById("videoContainer").style.display = "block";
+                } else {
+                    alert("❌ ভিডিও লিঙ্ক পাওয়া যায়নি!");
+                }
+            } catch (error) {
+                alert("⚠️ কিছু ভুল হয়েছে! অনুগ্রহ করে আবার চেষ্টা করুন।");
+                console.error("Error fetching video:", error);
+            }
+        });
+    </script>
+
+</body>
+</html>
