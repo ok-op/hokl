@@ -52,6 +52,8 @@
         <option value="0">🔥 Modern History by Khan Sir) Lecture 01</option>
         <option value="1">🎶 Music Short</option>
         <option value="2">🎮 Gaming Highlight</option>
+        <option value="3">📚 Science Tutorial</option>
+        <option value="4">🎭 Comedy Video</option>
     </select>
 
     <br><br>
@@ -67,34 +69,46 @@
     <button id="nextBtn">⏩ Next</button>
 
     <script>
-        let videos = [
-            { url: "https://www.youtube.com/embed/xCiNSvLJN7g", title: "🔥 Modern History by Khan Sir) Lecture 01" },
-            { url: "https://www.youtube.com/embed/hwCnXmLJ0WA", title: "🎶 Music Short" },
-            { url: "https://www.youtube.com/embed/Wzu6AJEYKKo", title: "🎮 Gaming Highlight" }
-        ];
-        
-        let currentIndex = 0;
+    let videos = [
+        { url: "https://www.youtube.com/embed/xCiNSvLJN7g", title: "🔥 Modern History by Khan Sir - Lecture 01" },
+        { url: "https://www.youtube.com/embed/hwCnXmLJ0WA", title: "🎶 Music Short" },
+        { url: "https://www.youtube.com/embed/Wzu6AJEYKKo", title: "🎮 Gaming Highlight" },
+        { url: "https://www.youtube.com/embed/abc123XYZ", title: "📚 Science Tutorial" },  // নতুন লিংক
+        { url: "https://www.youtube.com/embed/def456LMN", title: "🎭 Comedy Video" }       // নতুন লিংক
+    ];
 
-        // ড্রপডাউন থেকে ভিডিও পরিবর্তন
-        document.getElementById("videoSelect").addEventListener("change", function() {
-            currentIndex = parseInt(this.value);
-            document.getElementById("videoFrame").src = videos[currentIndex].url;
-        });
+    let currentIndex = 0;
 
-        // পরবর্তী ভিডিও
-        document.getElementById("nextBtn").addEventListener("click", function() {
-            currentIndex = (currentIndex + 1) % videos.length;
-            document.getElementById("videoFrame").src = videos[currentIndex].url;
-            document.getElementById("videoSelect").value = currentIndex;
-        });
+    // ড্রপডাউন মেনুতে সব ভিডিও যোগ করা
+    let selectElement = document.getElementById("videoSelect");
+    selectElement.innerHTML = "";  // পুরানো অপশন রিমুভ করুন
+    videos.forEach((video, index) => {
+        let option = document.createElement("option");
+        option.value = index;
+        option.textContent = video.title;
+        selectElement.appendChild(option);
+    });
 
-        // পূর্ববর্তী ভিডিও
-        document.getElementById("prevBtn").addEventListener("click", function() {
-            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-            document.getElementById("videoFrame").src = videos[currentIndex].url;
-            document.getElementById("videoSelect").value = currentIndex;
-        });
+    // ড্রপডাউন থেকে ভিডিও পরিবর্তন
+    selectElement.addEventListener("change", function() {
+        currentIndex = parseInt(this.value);
+        document.getElementById("videoFrame").src = videos[currentIndex].url;
+    });
+
+    // পরবর্তী ভিডিও
+    document.getElementById("nextBtn").addEventListener("click", function() {
+        currentIndex = (currentIndex + 1) % videos.length;
+        document.getElementById("videoFrame").src = videos[currentIndex].url;
+        selectElement.value = currentIndex;
+    });
+
+    // পূর্ববর্তী ভিডিও
+    document.getElementById("prevBtn").addEventListener("click", function() {
+        currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+        document.getElementById("videoFrame").src = videos[currentIndex].url;
+        selectElement.value = currentIndex;
+    });
     </script>
-
+        
 </body>
 </html>
