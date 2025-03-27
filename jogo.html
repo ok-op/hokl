@@ -131,61 +131,72 @@
 
     <script>
         let videos = [];
-        let currentIndex = 0;
-        let videoFrame = document.getElementById("videoFrame");
-        let selectElement = document.getElementById("videoSelect");
+let currentIndex = 0;
+let videoFrame = document.getElementById("videoFrame");
+let selectElement = document.getElementById("videoSelect");
 
-        // `videos.txt` ফাইল থেকে ভিডিও লোড করা
-        function loadVideos() {
-            fetch("videos.txt")
-                .then(response => response.text())
-                .then(data => {
-                    videos = []; // পুরাতন লিস্ট মুছে নতুন লিস্ট নিবে
-                    selectElement.innerHTML = ""; // ড্রপডাউন খালি করো
-                    let lines = data.split("\n"); // লাইনভিত্তিক আলাদা করা
-                    lines.forEach(line => {
-                        let [url, title] = line.split("|").map(item => item.trim()); // `|` দিয়ে আলাদা করা
-                        if (url && title) videos.push({ url, title });
-                    });
+// `videos.txt` ফাইল থেকে ভিডিও লোড করা
+function loadVideos(callback = null) {
+    fetch("videos.txt")
+        .then(response => response.text())
+        .then(data => {
+            let newVideos = [];
+            selectElement.innerHTML = ""; // ড্রপডাউন খালি করো
+            let lines = data.split("\n"); // লাইনভিত্তিক আলাদা করা
+            lines.forEach(line => {
+                let [url, title] = line.split("|").map(item => item.trim());
+                if (url && title) newVideos.push({ url, title });
+            });
 
-                    // ড্রপডাউন তৈরি করা
-                    videos.forEach((video, index) => {
-                        let option = document.createElement("option");
-                        option.value = index;
-                        option.textContent = video.title;
-                        selectElement.appendChild(option);
-                    });
+            // যদি ভিডিও লিস্ট পরিবর্তন হয়, তবে আপডেট করো
+            if (JSON.stringify(newVideos) !== JSON.stringify(videos)) {
+                videos = newVideos;
 
-                    // প্রথম ভিডিও প্লে করা
-                    if (videos.length > 0) {
-                        videoFrame.src = videos[0].url;
-                        selectElement.value = 0;
-                    }
+                // ড্রপডাউন তৈরি করা
+                videos.forEach((video, index) => {
+                    let option = document.createElement("option");
+                    option.value = index;
+                    option.textContent = video.title;
+                    selectElement.appendChild(option);
                 });
-        }
 
-        loadVideos(); // প্রথমবার ভিডিও লোড করো
-        setInterval(loadVideos, 30000); // ৩০ সেকেন্ড পরপর লোড হবে
+                // প্রথম ভিডিও প্লে করা (শুধু প্রথমবার)
+                if (videos.length > 0 && videoFrame.src === "") {
+                    videoFrame.src = videos[0].url;
+                    selectElement.value = 0;
+                }
+            }
 
-        // ড্রপডাউন থেকে ভিডিও পরিবর্তন
-        selectElement.addEventListener("change", function() {
-            currentIndex = parseInt(this.value);
-            videoFrame.src = videos[currentIndex].url;
+            if (callback) callback();
         });
+}
 
-        // Next Button
-        document.getElementById("nextBtn").addEventListener("click", function() {
-            currentIndex = (currentIndex + 1) % videos.length;
-            videoFrame.src = videos[currentIndex].url;
-            selectElement.value = currentIndex;
-        });
+loadVideos(); // প্রথমবার ভিডিও লোড করো
 
-        // Previous Button
-        document.getElementById("prevBtn").addEventListener("click", function() {
-            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-            videoFrame.src = videos[currentIndex].url;
-            selectElement.value = currentIndex;
-        });
+// প্রতি ৩০ সেকেন্ড পর শুধু নতুন ভিডিও যুক্ত হচ্ছে কিনা চেক করো, কিন্তু বর্তমান ভিডিও বন্ধ করো না
+setInterval(() => loadVideos(() => {
+    if (videos.length > 0) selectElement.value = currentIndex;
+}), 30000);
+
+// ড্রপডাউন থেকে ভিডিও পরিবর্তন
+selectElement.addEventListener("change", function() {
+    currentIndex = parseInt(this.value);
+    videoFrame.src = videos[currentIndex].url;
+});
+
+// Next Button
+document.getElementById("nextBtn").addEventListener("click", function() {
+    currentIndex = (currentIndex + 1) % videos.length;
+    videoFrame.src = videos[currentIndex].url;
+    selectElement.value = currentIndex;
+});
+
+// Previous Button
+document.getElementById("prevBtn").addEventListener("click", function() {
+    currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+    videoFrame.src = videos[currentIndex].url;
+    selectElement.value = currentIndex;
+});
     </script>
 
 </body>
